@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaakir Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --text: #334155;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text);
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Course Card */
+        .course-section {
+            padding: 80px 0;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .course-image {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: white;
+        }
+        
+        .course-image i {
+            font-size: 120px;
+            opacity: 0.9;
+        }
+        
+        .course-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+        }
+        
+        .course-content h2 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .price {
+            font-size: 2.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features i {
+            color: var(--accent);
+        }
+        
+        /* Payment Section */
+        .payment-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .payment-card h2 {
+            color: var(--dark);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .mastercard-only {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 2px solid var(--primary);
+        }
+        
+        .mastercard-only i {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 60px 0;
+            text-align: center;
+            background: var(--light);
+        }
+        
+        .contact-info {
+            display: inline-block;
+            background: white;
+            padding: 25px 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .course-card {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Shaakir<span>.shortcuts</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Kaali linux basic to advanced </h1>
+            <p>Baro <span class="highlight"></span> kaali linux ushqyso.</p>
+        </div>
+    </section>
+
+    <!-- Course Section -->
+    <section class="course-section">
+        <div class="container">
+            <div class="course-card">
+                <div class="course-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="course-content">
+                    <h2>kali linux Full Course</h2>
+                    <p>Koorso dhan oo ku saabsan kali linux .</p>
+                    
+                    <div class="price">$1</div>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> know the os/ barshda os ka</li>
+                        <li><i class="fas fa-check-circle"></i> Hack the mack/ sida mack lo jabyo</li>
+                        <li><i class="fas fa-check-circle"></i> gathering information /sida xog loo ururiyo</li>
+                        <li><i class="fas fa-check-circle"></i> leveraging ai for hacking</li>
+                        <li><i class="fas fa-check-circle"></i> prompt giude for hacking/ dariiq toosa oo kutusa hacking</li>
+                         <li><i class="fas fa-check-circle"></i> hiding messages/massege qarsoon</li>
+                          <li><i class="fas fa-check-circle"></i> surfing anonymously/sida lysku difaco</li>
+                           <li><i class="fas fa-check-circle"></i> social media hacking</li>
+                            <li><i class="fas fa-check-circle"></i> credit hack </li> sida lo jabiyo credit ka
+                             <li><i class="fas fa-check-circle"></i> keyboard spying/ sida kyboard lo basaso</li>
+                              <li><i class="fas fa-check-circle"></i> wifi hacking / sida lo jabiyo wifi</li>
+                               <li><i class="fas fa-check-circle"></i> hiding messages/massege qarsoon</li>
+                                <li><i class="fas fa-check-circle"></i> hiding messages/massege qarsoon</li>
+                                 <li><i class="fas fa-check-circle"></i> hiding messages/massege qarsoon</li>
+                                  <li><i class="fas fa-check-circle"></i> hiding messages/massege qarsoon</li>
+                                   <li><i class="fas fa-check-circle"></i> hiding messages/massege qarsoon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-card">
+                <h2>Bixi Lacagta Koorsada</h2>
+                
+                <div class="mastercard-only">
+                    <i class="fab fa-cc-mastercard"></i>
+                    <div>
+                        <h3>MasterCard Kaliya</h3>
+                        <p>Waxaad isticmaali kartaa MasterCard kaliya si aad u bixiso koorsada.</p>
+                    </div>
+                </div>
+                
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Magacaaga</label>
+                        <input type="text" id="name" class="form-input" placeholder="Magacaaga buuxa" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email-kaaga</label>
+                        <input type="email" id="email" class="form-input" placeholder="tusaale@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Lambarka Taleefanka</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="0637091467" value="0637091467" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="card">Lambarka MasterCard</label>
+                            <input type="text" id="card" class="form-input" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="expiry">Taariikhda Ugu Dhasho (MM/YY)</label>
+                            <input type="text" id="expiry" class="form-input" placeholder="MM/YY" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="cvv">CVV</label>
+                        <input type="text" id="cvv" class="form-input" placeholder="123" required>
+                    </div>
+                    
+                    <button type="button" class="btn" onclick="processPayment()">Bixi $149</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Haddii Aad Qabto Su'aalo</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> <strong>0637091467</strong></p>
+                <p><i class="fas fa-envelope"></i> support@shaakir.so</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Shaakir.shortcuts Academy. Dhammaan xuquuqaha way dhisiireen.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Format card number
+        document.getElementById('card').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formatted = value.replace(/(\d{4})/g, '$1 ').trim();
+            e.target.value = formatted.substring(0, 19);
+        });
+        
+        // Format expiry date
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value.substring(0, 5);
+        });
+        
+        // Process payment
+        function processPayment() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const card = document.getElementById('card').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            
+            // Validation
+            if (!name || !email || !phone || !card || !expiry || !cvv) {
+                alert('Fadlan buuxi dhammaan goobaha.');
+                return;
+            }
+            
+            if (card.replace(/\s/g, '').length !== 16) {
+                alert('Lambarka MasterCard waa inuu ahaadaa 16 digit.');
+                return;
+            }
+            
+            // Success message
+            alert('Mahadsanid! Lacag bixintu waa guulaysatay.\n\nKoorsada waa lagugu diiwaan geliyay. Macallinka ayaa ku soo xiriiri doona lambarka 0637091467 si aad u hesho access-ka koorsada.');
+            
+            // Reset form
+            document.getElementById('paymentForm').reset();
+            document.getElementById('phone').value = "0637091467";
+        }
+        
+        // Auto-fill phone on page load
+        window.onload = function() {
+            document.getElementById('phone').value = "0637091467";
+        };
+    </script>
+</body>
+</html>
